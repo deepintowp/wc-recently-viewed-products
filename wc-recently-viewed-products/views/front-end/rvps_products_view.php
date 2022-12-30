@@ -52,7 +52,7 @@ if(!function_exists( 'rvps_products_view' )){
 		
 		// Products Loop
 		if ( $the_query->have_posts() ) {
-			echo '<section class="woocommerce columns-4">';
+			echo '<section class="rvps woocommerce columns-4">';
 			echo '<h2>'.( isset( $rvps_settings['rvps_label'] ) ?  $rvps_settings['rvps_label']  : '' ).'</h2>';
 				
 				if($col_num == 0){
