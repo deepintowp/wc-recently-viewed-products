@@ -46,12 +46,13 @@ if(!function_exists( 'rvps_products_view' )){
 		$the_query = new WP_Query( array(
 				'post_type'  =>  'product',
 				'post_status'  =>  'publish',
-				'post__in'  =>  array_reverse( $ids )
+				'post__in'  =>  array_reverse( $ids ),
+				'orderby' => 'post__in'
 			));
 		
 		// Products Loop
 		if ( $the_query->have_posts() ) {
-			echo '<section class="products">';
+			echo '<section class="woocommerce products">';
 			echo '<h2>'.( isset( $rvps_settings['rvps_label'] ) ?  $rvps_settings['rvps_label']  : '' ).'</h2>';
 				
 				if($col_num == 0){
@@ -60,7 +61,7 @@ if(!function_exists( 'rvps_products_view' )){
 					$col = $col_num;
 				}
 				
-				echo '<ul class="products  columns-'.apply_filters( 'loop_shop_columns', $col ).'">';
+				echo '<ul class="products  columns-'. $col .'">';
 				while ( $the_query->have_posts() ) {
 					$the_query->the_post();
 					wc_get_template_part( 'content', 'product' );
